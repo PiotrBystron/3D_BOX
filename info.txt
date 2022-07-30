@@ -1,0 +1,18 @@
+LINIA NR 1
+zapisana pozycja X i Y myszki, aby kliknąć unsure
+
+
+LINIA NR 2
+zapisana pozycja X i Y myszki, aby modyfikować XYZ box-ów
+
+
+LINIA NR 3
+5 obiektów - możliwa jest ich modyfikacja przez użytkownika (wszystkie wartości oddzielane przecinkiem ",")
+    1. nazwa obiektu - można zmienić, ale nie usuwać 
+    2. wymiar X - można użyć "." aby wpisać watości dziesiętne 
+    3. wymiar Y - można użyć "." aby wpisać watości dziesiętne 
+    4. wymiar Z - można użyć "." aby wpisać watości dziesiętne 
+
+PRZYKŁAD
+transporter,4.2,2.1,0.1,
+    nazwa    X   Y   Z  

@@ -1,0 +1,3 @@
+1310,887
+1310,887
+car,4.2,2,9,transporter_slim,4.4,2,9,transporter,8,2,9,truck_slim,10.5,3,9,truck,16.5,3,9
