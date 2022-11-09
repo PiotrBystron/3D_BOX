@@ -1,7 +1,9 @@
 import pyautogui as pg
 import keyboard
 import win32api
+import pyperclip
 import sys
+import time
 
 
 win32api.MessageBox(0, 
@@ -14,6 +16,12 @@ win32api.MessageBox(0,
 3 - wpisz XYZ obiektu 3
 4 - wpisz XYZ obiektu 4
 5 - wpisz XYZ obiektu 5
+6 - wpisz XYZ obiektu 6
+
+F2 - kopiuj XYZ
+F3 - wklej XYZ
+
++ - zatrzymanie programu
 
 Naciśnij Q aby wyłączyć program''', 'Clicker')
 
@@ -53,10 +61,26 @@ def typing_XYZ(X,Y,Z):
     keyboard.write(Z)
     keyboard.send("enter")
 
-def options(arg):
-    XYunsure=load_data(0)
+copy_X, copy_Y, copy_Z = 0, 0, 0
+
+def copy_XYZ():
+    global copy_X, copy_Y, copy_Z
     XYbox=load_data(1)
-    DANE=load_data(2)
+    pg.moveTo(XYbox)
+    pg.leftClick()
+    pg.hotkey('ctrl', 'c')
+    copy_X = pyperclip.paste()
+    keyboard.send("tab")
+    pg.hotkey('ctrl', 'c')
+    copy_Y = pyperclip.paste()
+    keyboard.send("tab")
+    pg.hotkey('ctrl', 'c')
+    copy_Z = pyperclip.paste()
+
+def options(arg):
+    XYunsure = load_data(0)
+    XYbox = load_data(1)
+    DANE = load_data(2)
 
     match arg:
         case "<":
@@ -102,13 +126,35 @@ def options(arg):
             pg.leftClick()
             typing_XYZ(DANE[17],DANE[18],DANE[19])
 
-        case "q":
+        case "6":
+            #object_6
+            pg.moveTo(XYbox)
+            pg.leftClick()
+            typing_XYZ(DANE[21],DANE[22],DANE[23])
+
+        case "+":
+            time.sleep(0.6)
+            while True:
+                pause = keyboard.read_key()
+                if pause == "+":
+                    break
+            time.sleep(0.6)
+
+        case "f2":
+            copy_XYZ()
+
+        case "f3":
+            pg.moveTo(XYbox)
+            pg.leftClick()
+            typing_XYZ(copy_X, copy_Y, copy_Z)
+
+        case "Q":
             win32api.MessageBox(0, 'Program został wyłączony', 'Clicker')
             sys.exit()
 
-        
-#car,4.2,2,1.5,transporter_slim,4.4,2,3,transporter,8, 2 ,4 ,truck_slim, 10.5, 3 , 6, truck, 16.5, 3  , 7
-# 0   1  2  3       4            5  6 7      8      9 10  11   12        13   14  15    16    17   18  19
+
+#car,4.2,2,1.5,transporter_slim,4.4,2,3,transporter,8, 2 ,4 ,truck_slim, 10.5, 3 , 6, truck, 16.5, 3  , 7,   truck, 16.5, 3  , 7
+# 0   1  2  3       4            5  6 7      8      9 10  11   12        13   14  15    16    17   18  19      20    21  22   23
 
 
 def clicker():
