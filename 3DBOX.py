@@ -133,12 +133,12 @@ def options(arg):
             typing_XYZ(DANE[21],DANE[22],DANE[23])
 
         case "+":
-            time.sleep(0.6)
+            time.sleep(0.6) # Zabezpieczenie przed stanami nieustalonymi
             while True:
                 pause = keyboard.read_key()
                 if pause == "+":
                     break
-            time.sleep(0.6)
+            time.sleep(0.6) # Zabezpieczenie przed stanami nieustalonymi
 
         case "f2":
             copy_XYZ()
@@ -152,16 +152,13 @@ def options(arg):
             win32api.MessageBox(0, 'Program został wyłączony', 'Clicker')
             sys.exit()
 
-
 #car,4.2,2,1.5,transporter_slim,4.4,2,3,transporter,8, 2 ,4 ,truck_slim, 10.5, 3 , 6, truck, 16.5, 3  , 7,   truck, 16.5, 3  , 7
 # 0   1  2  3       4            5  6 7      8      9 10  11   12        13   14  15    16    17   18  19      20    21  22   23
-
 
 def clicker():
 
     while True:
         key = keyboard.read_key()
         options(key)
-
 
 clicker()
